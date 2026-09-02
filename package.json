@@ -1,7 +1,7 @@
 {
   "name": "veo-auto-studio",
   "productName": "Veo Auto Studio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Desktop app for automated high-converting sales video generation using Google Veo and Gemini",
   "author": "Veo Auto Studio Team",
   "private": true,
@@ -55,5 +55,8 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
   }
 }
