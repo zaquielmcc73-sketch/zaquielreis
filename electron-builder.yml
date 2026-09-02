@@ -1,0 +1,42 @@
+appId: com.veoautostudio.app
+productName: Veo Auto Studio
+copyright: Copyright © 2026 Veo Auto Studio
+
+directories:
+  output: dist-electron
+publish:
+  provider: github
+  owner: zaquielmcc73-sketch
+  repo: zaquielreis
+asar: true
+asarUnpack:
+  - "node_modules/@ffmpeg-installer/**"
+  - "node_modules/@ffprobe-installer/**"
+
+files:
+  - "dist/**/*"
+  - "electron/**/*"
+  - "data/**/*"
+  - "package.json"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  artifactName: "Veo-Auto-Studio-Setup.${ext}"
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: "Veo Auto Studio"
+  runAfterFinish: true
+  artifactName: "Veo-Auto-Studio-Setup.${ext}"
+
+portable:
+  artifactName: "Veo-Auto-Studio-Portable.${ext}"

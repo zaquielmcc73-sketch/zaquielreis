@@ -1,0 +1,59 @@
+{
+  "name": "veo-auto-studio",
+  "productName": "Veo Auto Studio",
+  "version": "1.0.0",
+  "description": "Desktop app for automated high-converting sales video generation using Google Veo and Gemini",
+  "author": "Veo Auto Studio Team",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "tsx server.ts",
+    "build": "vite build && electron-builder",
+    "build:full": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
+    "dist": "electron-builder --win",
+    "dist:win64": "npm run build:full && electron-builder --win --x64",
+    "dist:portable": "npm run build:full && electron-builder --win portable --x64",
+    "clean": "rm -rf dist dist-electron server.js",
+    "lint": "tsc --noEmit",
+    "electron:dev": "npm run build:full && electron electron/main.cjs",
+    "electron:build": "npm run dist",
+    "release": "npm run build:full && electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.veoautostudio.app",
+    "productName": "Veo Auto Studio",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "zaquielmcc73-sketch",
+        "repo": "zaquielreis",
+        "releaseType": "release"
+      }
+    ],
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/@ffmpeg-installer/**",
+      "node_modules/@ffprobe-installer/**"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

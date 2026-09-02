@@ -1,0 +1,6 @@
+{
+  "name": "Veo Auto Studio",
+  "description": "Aplicativo desktop profissional para criação automatizada de vídeos de vendas em escala utilizando a API oficial do Google Veo e Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
